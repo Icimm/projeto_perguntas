@@ -4,48 +4,67 @@ import 'package:flutter/material.dart';
 
 main() {
 runApp(PerguntaApp());
+
 }
 
- class PerguntaApp extends StatelessWidget {
-
- var perguntaSelecionada = 0;
-
+class PerguntaAppState extends State<PerguntaApp> {
+  var perguntaSelecionada = 0;
 
   void responder() {
-    perguntaSelecionada++;
-    print( perguntaSelecionada);
+    setState(() {
+      perguntaSelecionada++;
+    });
+    print(perguntaSelecionada);
+  }
+    @override
+    Widget build(BuildContext context) {
+      final perguntas = [
+        'Qual é a sua cor favorita ?',
+        'Qual é o seu animal favorito ?',
+      ];
+
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('Perguntas'),
+          ),
+
+          body: Column(
+            children: [
+              Text(perguntas[perguntaSelecionada]),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: ElevatedButton(
+                  child: Text('Resposta 1'),
+                  onPressed:  responder,
+
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  child: Text('Resposta 2'),
+                  onPressed:  responder,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: ElevatedButton(
+                  child: Text('Resposta 3'),
+                  onPressed:  responder ,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final perguntas = [
-      'Qual é a sua cor favorita ?',
-      'Qual é o seu animal favorito ?',
-    ];
+ class PerguntaApp extends StatefulWidget {
 
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Perguntas'),
-        ),
-        body: Column(
-          children: [
-            Text(perguntas[perguntaSelecionada]),
-            ElevatedButton(
-                child: Text('Resposta 1'),
-                onPressed:  responder,
-            ),
-            ElevatedButton(
-              child: Text('Resposta 2'),
-              onPressed:  responder,
-            ),
-            ElevatedButton(
-              child: Text('Resposta 3'),
-              onPressed:  responder ,
-            ),
-          ],
-        ),
-      ),
-    );
+  PerguntaAppState createState() {
+    return PerguntaAppState();
   }
-}
+ }
