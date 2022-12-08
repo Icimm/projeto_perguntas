@@ -10,17 +10,32 @@ class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
   final _perguntas = const [
   {
-  'texto':'Qual é a sua cor favotita ?',
-  'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco'],
+   'texto':'Qual é a sua cor favotita ?',
+    'respostas': [
+    {'texto' : 'Preto','pontuacao': 10},
+    {'texto' : 'Vermelho','pontuacao': 5},
+    {'texto' : 'Verde','pontuacao': 3},
+    {'texto' : 'Branco', 'pontuacao' :1},
+   ],
   },
   {
-  'texto':'Qual é o seu animal favorito ?',
-  'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão'],
-  },
-  {
-  'texto':'Qual é o seu instrutor favorito ?',
-  'respostas': ['Maria', 'João', 'Léo', 'Pedro'],
-   }
+    'texto':'Qual é o seu animal favorito ?',
+    'respostas': [
+    {'texto' : 'Coelho','pontuacao': 10},
+    {'texto' : 'Cobra','pontuacao': 5},
+    {'texto' : 'Elefante','pontuacao': 3},
+    {'texto' : 'Leão', 'pontuacao' :1},
+  ],
+},
+    {
+      'texto':'Qual é o seu instrutor favorito ?',
+      'respostas': [
+        {'texto' : 'Léo','pontuacao': 10},
+        {'texto' : 'Maria','pontuacao': 5},
+        {'texto' : 'João','pontuacao': 3},
+        {'texto' : 'Pedro', 'pontuacao' :1},
+      ],
+    },
   ];
 
   void _responder() {
