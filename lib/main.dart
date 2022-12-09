@@ -8,6 +8,7 @@ main() => runApp(PerguntaApp());
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
+  var _pontuacaoTotal = 0;
   final _perguntas = const [
   {
    'texto':'Qual é a sua cor favotita ?',
@@ -38,13 +39,21 @@ class _PerguntaAppState extends State<PerguntaApp> {
     },
   ];
 
-  void _responder() {
+  void _responder(int pontuacao) {
     if(temPerguntaSelecionada) {
       setState(() {
         _perguntaSelecionada++;
+        _pontuacaoTotal += pontuacao;
       });
     }
   }
+
+  void _reiniciarQuestionario(){
+   setState(() {
+     _perguntaSelecionada = 0;
+     _pontuacaoTotal = 0;
+   });
+}
 
   bool get temPerguntaSelecionada {
     return _perguntaSelecionada < _perguntas.length;
@@ -66,7 +75,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                perguntaSelecionada: _perguntaSelecionada,
                quantoResponder: _responder,
              )
-              : Resultado(),
+              : Resultado(_pontuacaoTotal, _reiniciarQuestionario),
           ),
       );
     }
